@@ -1,6 +1,3 @@
-# intrusion-detection-macos
- Real-Time Intrusion Detection System for macOS (Demo Version) Monitors file integrity, suspicious network activity, and system changes using Zeek, osquery, and fswatch. Sends smart alerts via Telegram.
-
 Intrusion Detection Project (macOS Demo)
 
 This project is a macOS-based intrusion detection system (IDS) demo, designed to monitor and alert on suspicious system and network activity. It leverages open-source tools integrated with custom scripts to provide real-time insights into potential security threats.
@@ -8,17 +5,19 @@ Note: This is a demo tailored for macOS environments. A deployable and productio
 
 
 The system combines multiple monitoring layers, each focusing on different threat vectors:
-1. Zeek Network Monitoring
+. Zeek Network Monitoring
 Purpose: Zeek inspects live network traffic and generates detailed logs about connections, protocols, and suspicious events.
 What it detects: Unusual port scanning, failed login attempts, lateral movement attempts, connections to known malicious IPs, and abnormal traffic spikes (potential DDoS).
 Data output: Zeek produces human- and machine-readable logs, including connection summaries and security events, stored in designated log directories.
 Triggering: Custom scripts parse these logs to detect defined anomalies and raise alerts.
-1. Osquery File Integrity Monitoring
+
+2. Osquery File Integrity Monitoring
 Purpose: Osquery runs scheduled queries to detect changes in important system files and binaries, ensuring system integrity.
 What it detects: Unexpected modifications, additions, or deletions in critical files that could indicate compromise or malware.
 Snapshots: Osquery exports JSON snapshots of the current state, which are compared over time.
 Alerts: When deviations from baseline are detected, alerts are generated.
-1. Fswatch Filesystem Monitoring
+
+3. Fswatch Filesystem Monitoring
 Purpose: Watches real-time filesystem events for rapid detection of changes in key directories.
 What it detects: Immediate creation, deletion, or modification of monitored files/folders.
 Use case: Complements osquery by catching real-time changes that might be missed between snapshot intervals.
