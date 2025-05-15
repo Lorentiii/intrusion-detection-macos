@@ -5,7 +5,7 @@ Note: This is a demo tailored for macOS environments. A deployable and productio
 
 
 The system combines multiple monitoring layers, each focusing on different threat vectors:
-. Zeek Network Monitoring
+1. Zeek Network Monitoring
 Purpose: Zeek inspects live network traffic and generates detailed logs about connections, protocols, and suspicious events.
 What it detects: Unusual port scanning, failed login attempts, lateral movement attempts, connections to known malicious IPs, and abnormal traffic spikes (potential DDoS).
 Data output: Zeek produces human- and machine-readable logs, including connection summaries and security events, stored in designated log directories.
@@ -21,13 +21,26 @@ Alerts: When deviations from baseline are detected, alerts are generated.
 Purpose: Watches real-time filesystem events for rapid detection of changes in key directories.
 What it detects: Immediate creation, deletion, or modification of monitored files/folders.
 Use case: Complements osquery by catching real-time changes that might be missed between snapshot intervals.
+
+
+
 Alert Severity & Color Coding
 
 To help prioritize responses, alerts are color-coded by severity:
+
+
 🔴 Red (Critical): High-confidence indicators of active intrusion, such as confirmed lateral movement, unauthorized binary changes, or known malicious IP communication.
+
 🟡 Yellow (Warning): Suspicious but less certain events, like unusual port scans or repeated failed logins that warrant investigation.
+
 🟢 Green (Informational): Normal or low-risk activities, such as routine system events or successful monitoring script startups.
+
+
 Alerts are delivered through a Telegram bot, providing real-time notifications to the system administrator or security team.
+
+
+
+
 Core Setup Script: setup.sh
 
 This script automates initial environment preparation and system activation:
